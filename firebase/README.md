@@ -61,6 +61,18 @@ Edit [`exercise.ts`](./exercise.ts):
 
 When a test passes, move on to the next `describe` block.
 
+### Challenge: event creators
+
+After you are comfortable with reads, implement **`printEventCreators`** in [`exercise.ts`](./exercise.ts): loop every document in `events`, read `creator` (a user uid), load `users/{uid}`, and **`console.log`** one line per event (event name plus creator display name).
+
+There is no automated test for this. Compare with the reference in [`exercise.solution.ts`](./exercise.solution.ts) when you are done. With emulators running and data seeded:
+
+```bash
+npm run challenge
+```
+
+This runs [`challenge-run.ts`](./challenge-run.ts), which calls the solution’s `printEventCreators`. To try your own implementation, change the import in that file to `./exercise`.
+
 ### Emulator UI
 
 After seeding, open the Emulator Suite UI (often **http://localhost:4000**) to inspect `events` and other collections.

@@ -1,6 +1,7 @@
 {
   "scripts": {
     "seed": "ts-node seed.ts",
+    "challenge": "ts-node challenge-run.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -8,6 +9,7 @@
     "firebase": "^11.0.0"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
     "firebase-admin": "^13.7.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2",

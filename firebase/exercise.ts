@@ -1,5 +1,5 @@
-import type { CreateEventInput, EventDocument } from "./exercise.types";
-import { db  } from "./config";
+import type { CreateEventInput, EventDocument, UserDocument } from "./exercise.types";
+import { db } from "./config";
 import { collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc } from "firebase/firestore";
 
 function notImplemented(name: string): never {
@@ -44,4 +44,12 @@ export async function updateEventName(_eventId: string, _name: string): Promise<
  */
 export async function deleteEvent(_eventId: string): Promise<void> {
     notImplemented("deleteEvent");
+}
+
+/**
+ * Challenge: loop all `events`, resolve each `creator` uid to a user, and `console.log`
+ * event title + creator name. Fetch `events` and `users` once, build a `Map<uid, UserDocument>`, then join in memory.
+ */
+export async function printEventCreators(): Promise<void> {
+
 }

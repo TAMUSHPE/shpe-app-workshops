@@ -1,6 +1,31 @@
 import type { GeoPoint, Timestamp } from "firebase/firestore";
 
 /**
+ * Top-level `users/{uid}` document shape (seed writes `publicInfo` fields plus `uid`).
+ */
+export interface UserDocument {
+    uid: string;
+    email: string;
+    displayName: string;
+    name: string;
+    bio: string;
+    major: string;
+    classYear: string;
+    committees: string[];
+    roles: Record<string, boolean>;
+    points: number;
+    pointsThisMonth: number;
+    pointsRank: number;
+    rankChange: string;
+    isStudent: boolean;
+    isEmailPublic: boolean;
+    resumeVerified: boolean;
+    interests: string[];
+    nationalExpiration: Timestamp;
+    chapterExpiration: Timestamp;
+}
+
+/**
  * Shape of an `events` document (aligned with seeded data in `seed.ts`).
  * Client SDK returns `Timestamp` and `GeoPoint` instances when reading from Firestore.
  */
