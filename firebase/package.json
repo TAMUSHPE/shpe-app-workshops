@@ -1,10 +1,16 @@
 {
+  "scripts": {
+    "seed": "ts-node seed.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
   "dependencies": {
     "firebase": "^11.0.0"
   },
   "devDependencies": {
     "firebase-admin": "^13.7.0",
     "ts-node": "^10.9.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "vitest": "^3.0.0"
   }
 }
