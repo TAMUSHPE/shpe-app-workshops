@@ -6,8 +6,42 @@ Practice Firestore **Create, Read, Update, Delete** against the **Firestore** an
 
 ### Prerequisites
 
-- Node.js (LTS)
-- Firebase CLI (`npm i -g firebase-tools`)
+- **Node.js** (LTS) — [nodejs.org](https://nodejs.org/)
+- **Firebase CLI** — see [Firebase CLI setup](#firebase-cli-setup) below
+
+### Firebase CLI setup
+
+The CLI starts the local emulators used by this workshop.
+
+**Install (pick one):**
+
+1. **Global install** (common on macOS / Linux / Windows):
+
+   ```bash
+   npm install -g firebase-tools
+   ```
+
+   On some systems you need elevated permissions or may prefer a [version manager](https://firebase.google.com/docs/cli#install-cli); follow the [official install guide](https://firebase.google.com/docs/cli#install_the_firebase_cli) if `npm` global path issues appear.
+
+2. **No global install** — run via `npx` when you need a command:
+
+   ```bash
+   npx firebase-tools@latest --version
+   ```
+
+   For emulators, use `npx firebase-tools@latest emulators:start` from this `firebase/` directory instead of `firebase emulators:start`.
+
+**Check that it works:**
+
+```bash
+firebase --version
+```
+
+You should see a semver (for example `13.x.x`). If the shell reports `firebase` is not recognized, confirm your global npm bin directory is on your `PATH`, or use the `npx firebase-tools@latest …` form.
+
+**Signing in**
+
+For this repo you only need the **emulators** in [`firebase.json`](./firebase.json). Local emulator runs do not require `firebase login`. Use `firebase login` only when you deploy to a real Firebase project or use project-specific CLI features against production.
 
 ### 1. Start emulators
 
