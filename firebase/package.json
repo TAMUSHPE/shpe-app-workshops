@@ -1,5 +1,7 @@
 {
   "scripts": {
+    "emulators:docker": "docker compose up --build",
+    "emulators:docker:detach": "docker compose up --build -d",
     "seed": "ts-node seed.ts",
     "challenge": "ts-node challenge-run.ts",
     "test": "vitest run",

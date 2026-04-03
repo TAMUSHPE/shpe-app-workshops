@@ -1,0 +1,10 @@
+services:
+  firebase-emulators:
+    build: .
+    container_name: shpe-firebase-emulators
+    ports:
+      - "4000:4000" # Emulator UI
+      - "4400:4400" # Emulator hub
+      - "4500:4500" # Logging (reserved by suite)
+      - "8080:8080" # Firestore
+      - "9099:9099" # Auth

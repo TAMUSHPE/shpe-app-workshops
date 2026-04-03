@@ -6,8 +6,9 @@ Practice Firestore **Create, Read, Update, Delete** against the **Firestore** an
 
 ### Prerequisites
 
-- **Node.js** (LTS) — [nodejs.org](https://nodejs.org/)
-- **Firebase CLI** — see [Firebase CLI setup](#firebase-cli-setup) below
+- **Node.js** (LTS) — [nodejs.org](https://nodejs.org/) (for `npm run seed`, tests, and TypeScript)
+- **Firebase CLI** — see [Firebase CLI setup](#firebase-cli-setup) below **or** use [Docker for emulators](#option-b-docker-skip-local-java-and-global-firebase-tools-for-emulators) and skip installing the CLI for local emulator runs
+- **Docker** (optional) — only if you use Option B to start emulators in a container
 
 ### Firebase CLI setup
 
@@ -45,13 +46,38 @@ For this repo you only need the **emulators** in [`firebase.json`](./firebase.js
 
 ### 1. Start emulators
 
+Pick **one** option and leave it running while you seed, test, or run the challenge.
+
+#### Option A: Firebase CLI on your machine
+
 From this directory:
 
 ```bash
 firebase emulators:start
 ```
 
-Leave this running. By default, Firestore is on **8080** and Auth on **9099** (see [`firebase.json`](./firebase.json)).
+#### Option B: Docker (skip local Java and global `firebase-tools` for emulators)
+
+Use this if you have [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows / macOS) or Docker Engine with the [Compose plugin](https://docs.docker.com/compose/install/).
+
+From this directory:
+
+```bash
+docker compose up --build
+```
+
+Or:
+
+```bash
+npm run emulators:docker
+```
+
+The image is based on **Eclipse Temurin 21 JRE** plus **Node.js 22** and `firebase-tools` (the Firestore emulator requires Java **21+**; Java 17 is no longer supported). Published ports match [`firebase.json`](./firebase.json): Emulator UI **4000**, Firestore **8080**, Auth **9099** (plus **4400** / **4500** for the emulator hub and logging). [`config.ts`](./config.ts), `npm run seed`, `npm test`, and `npm run challenge` on the host still use **`localhost`** on those ports.
+
+- Foreground: stop with `Ctrl+C`, then `docker compose down` if the container keeps running.
+- Background: `npm run emulators:docker:detach` — stop later with `docker compose down`.
+
+By default, Firestore is on **8080** and Auth on **9099** (see [`firebase.json`](./firebase.json)).
 
 ### 2. Seed the database
 
